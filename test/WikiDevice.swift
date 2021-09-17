@@ -91,9 +91,9 @@ class WikiDevice {
                         let rows = table[rowIndex].components(separatedBy: "<td>")
                         if rows.count>0 {
                             if rows[0].contains("title") { //hyperlink
-                                if let (cleanedGen) = rows[0].components(separatedBy: #"">"#).dropFirst().compactMap({ sub in
-                                    (sub.range(of: "</a>")?.lowerBound).flatMap { endRange in
-                                        String(sub[sub.startIndex ..< endRange])
+                                if let (cleanedGen) = rows[0].components(separatedBy: #">"#).dropFirst().compactMap({ sub in
+                                    (sub.range(of: "</")?.lowerBound).flatMap { endRange in
+                                        String(sub[sub.startIndex ..< endRange]).replacingOccurrences(of: #"\n"#, with: "")
                                     }
                                 }).first {
                                     completion(cleanedGen)
