@@ -1,5 +1,5 @@
-# WikiDevice: the asynchronous library that gives you the answer from theiphonewiki
-the asynchronous library that gives you the answer from theiphonewiki
+## WikiDevice
+**the asynchronous library that gives you the answer from theiphonewiki**
 
 A crazy little experiment for automation fans like me. I made this algorithm that reads the identification code of the device, physical or simulated, 
 and load the theiphonewiki page to extrapolate the model name based on the identification code (example iPhone11,2 -> iPhone XS). 
@@ -24,6 +24,6 @@ WikiDevice.model { (model) in
 ```
 
 # Output:
-Using WikiDevice, running on: iPhone 11 Pro Max
+**Using WikiDevice, running on: iPhone 11 Pro Max**
 
 You can find more details to my Stack Overflow answer: https://stackoverflow.com/a/69225035/1894067
