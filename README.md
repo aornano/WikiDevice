@@ -15,11 +15,15 @@ P.S. Feel free to improve my code to get an even more precise result and a more 
 P.S.S. If you need a more immediate answer use my previous answer here in this page
 
 # Usage:
+```
 var deviceModel:String = ""
 WikiDevice.model { (model) in
      print("Using WikiDevice, running on: \(model)")
      deviceModel = model
 }
+```
 
 # Output:
 Using WikiDevice, running on: iPhone 11 Pro Max
+
+You can find more details to my Stack Overflow answer: https://stackoverflow.com/a/69225035/1894067
