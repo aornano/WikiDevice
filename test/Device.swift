@@ -111,14 +111,14 @@ unrecognized       = "?unrecognized?"
 // MARK: UIDevice extensions
 // #-#-#-#-#-#-#-#-#-#-#-#-#
 
-    public extension UIDevice {
+public extension UIDevice {
     
     var type: Model {
         var systemInfo = utsname()
         uname(&systemInfo)
         let modelCode = withUnsafePointer(to: &systemInfo.machine) {
-            $0.withMemoryRebound(to: CChar.self, capacity: 1) {
-                ptr in String.init(validatingUTF8: ptr)
+            $0.withMemoryRebound(to: CChar.self, capacity: Int(_SYS_NAMELEN)) {
+                String(cString: $0)
             }
         }
     
@@ -295,7 +295,7 @@ unrecognized       = "?unrecognized?"
             "AppleTV11,1" : .AppleTV2_4K
         ]
     
-        guard let mcode = modelCode, let map = String(validatingUTF8: mcode), let model = modelMap[map] else { return Model.unrecognized }
+        guard let model = modelMap[modelCode] else { return Model.unrecognized }
         if model == .simulator {
             if let simModelCode = ProcessInfo().environment["SIMULATOR_MODEL_IDENTIFIER"] {
                 if let simMap = String(validatingUTF8: simModelCode), let simModel = modelMap[simMap] {
@@ -304,5 +304,5 @@ unrecognized       = "?unrecognized?"
             }
         }
         return model
-        }
     }
+}
